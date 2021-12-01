@@ -9,17 +9,23 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet private weak var resultLabel: UILabel!
+
+    private var count = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        resultLabel.text = "0"
+        count = 0
+        resultLabel.text = "\(count)"
     }
+
     @IBAction func countUp(_ sender: Any) {
-        guard var intCount = resultLabel.text.flatMap({Int($0)}) else { return }
-        intCount += 1
-        resultLabel.text = "\(intCount)"
+        count += 1
+        resultLabel.text = "\(count)"
     }
+
     @IBAction func clearResult(_ sender: Any) {
-        resultLabel.text = "0"
+        count = 0
+        resultLabel.text = "\(count)"
     }
 }
